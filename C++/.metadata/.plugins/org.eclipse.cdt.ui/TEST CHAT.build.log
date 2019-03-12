@@ -1,0 +1,91 @@
+12:58:04 **** Incremental Build of configuration Debug for project TEST CHAT ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TEST CHAT.o" "..\\src\\TEST CHAT.cpp" 
+..\src\TEST CHAT.cpp:8:0: warning: ignoring #pragma comment  [-Wunknown-pragmas]
+ #pragma comment (lib, "Ws2_32.lib")
+ 
+..\src\TEST CHAT.cpp:204:0: warning: ignoring #pragma comment  [-Wunknown-pragmas]
+ #pragma comment (lib, "Ws2_32.lib")
+ 
+..\src\TEST CHAT.cpp:24:90: error: 'std::thread' has not been declared
+ int process_client(client_type &new_client, std::vector<client_type> &client_array, std::thread &thread);
+                                                                                          ^~~~~~
+..\src\TEST CHAT.cpp:27:90: error: 'std::thread' has not been declared
+ int process_client(client_type &new_client, std::vector<client_type> &client_array, std::thread &thread)
+                                                                                          ^~~~~~
+..\src\TEST CHAT.cpp: In function 'int process_client(client_type&, std::vector<client_type>&, int&)':
+..\src\TEST CHAT.cpp:78:12: error: request for member 'detach' in 'thread', which is of non-class type 'int'
+     thread.detach();
+            ^~~~~~
+..\src\TEST CHAT.cpp: In function 'int main()':
+..\src\TEST CHAT.cpp:93:5: error: 'thread' is not a member of 'std'
+     std::thread my_thread[MAX_CLIENTS];
+     ^~~
+..\src\TEST CHAT.cpp:108:80: error: 'getaddrinfo' was not declared in this scope
+     getaddrinfo(static_cast<LPCTSTR>(IP_ADDRESS), DEFAULT_PORT, &hints, &server);
+                                                                                ^
+..\src\TEST CHAT.cpp:168:13: error: 'my_thread' was not declared in this scope
+             my_thread[temp_id] = std::thread(process_client, std::ref(client[temp_id]), std::ref(client), std::ref(my_thread[temp_id]));
+             ^~~~~~~~~
+..\src\TEST CHAT.cpp:168:34: error: 'thread' is not a member of 'std'
+             my_thread[temp_id] = std::thread(process_client, std::ref(client[temp_id]), std::ref(client), std::ref(my_thread[temp_id]));
+                                  ^~~
+..\src\TEST CHAT.cpp:185:9: error: 'my_thread' was not declared in this scope
+         my_thread[i].detach();
+         ^~~~~~~~~
+..\src\TEST CHAT.cpp: At global scope:
+..\src\TEST CHAT.cpp:210:8: error: redefinition of 'struct client_type'
+ struct client_type
+        ^~~~~~~~~~~
+..\src\TEST CHAT.cpp:14:8: error: previous definition of 'struct client_type'
+ struct client_type
+        ^~~~~~~~~~~
+..\src\TEST CHAT.cpp: In function 'int process_client(client_type&)':
+..\src\TEST CHAT.cpp:225:27: error: 'struct client_type' has no member named 'received_message'
+         memset(new_client.received_message, 0, DEFAULT_BUFLEN);
+                           ^~~~~~~~~~~~~~~~
+..\src\TEST CHAT.cpp:229:62: error: 'struct client_type' has no member named 'received_message'
+             int iResult = recv(new_client.socket, new_client.received_message, DEFAULT_BUFLEN, 0);
+                                                              ^~~~~~~~~~~~~~~~
+..\src\TEST CHAT.cpp:232:36: error: 'struct client_type' has no member named 'received_message'
+                 cout << new_client.received_message << endl;
+                                    ^~~~~~~~~~~~~~~~
+..\src\TEST CHAT.cpp: In function 'int main()':
+..\src\TEST CHAT.cpp:247:5: error: redefinition of 'int main()'
+ int main()
+     ^~~~
+..\src\TEST CHAT.cpp:83:5: note: 'int main()' previously defined here
+ int main()
+     ^~~~
+..\src\TEST CHAT.cpp:252:51: error: too many initializers for 'client_type'
+     client_type client = { INVALID_SOCKET, -1, "" };
+                                                   ^
+..\src\TEST CHAT.cpp:252:51: error: narrowing conversion of '4294967295u' from 'SOCKET {aka unsigned int}' to 'int' inside { } [-Wnarrowing]
+..\src\TEST CHAT.cpp:252:51: error: narrowing conversion of '-1' from 'int' to 'SOCKET {aka unsigned int}' inside { } [-Wnarrowing]
+..\src\TEST CHAT.cpp:273:90: error: 'getaddrinfo' was not declared in this scope
+     iResult = getaddrinfo(static_cast<LPCTSTR>(IP_ADDRESS), DEFAULT_PORT, &hints, &result);
+                                                                                          ^
+..\src\TEST CHAT.cpp:304:24: error: 'freeaddrinfo' was not declared in this scope
+     freeaddrinfo(result);
+                        ^
+..\src\TEST CHAT.cpp:316:32: error: 'struct client_type' has no member named 'received_message'
+     recv(client.socket, client.received_message, DEFAULT_BUFLEN, 0);
+                                ^~~~~~~~~~~~~~~~
+..\src\TEST CHAT.cpp:317:22: error: 'struct client_type' has no member named 'received_message'
+     message = client.received_message;
+                      ^~~~~~~~~~~~~~~~
+..\src\TEST CHAT.cpp:321:33: error: 'struct client_type' has no member named 'received_message'
+         client.id = atoi(client.received_message);
+                                 ^~~~~~~~~~~~~~~~
+..\src\TEST CHAT.cpp:323:9: error: 'thread' was not declared in this scope
+         thread my_thread(process_client, client);
+         ^~~~~~
+..\src\TEST CHAT.cpp:338:9: error: 'my_thread' was not declared in this scope
+         my_thread.detach();
+         ^~~~~~~~~
+..\src\TEST CHAT.cpp:341:24: error: 'struct client_type' has no member named 'received_message'
+         cout << client.received_message << endl;
+                        ^~~~~~~~~~~~~~~~
+
+12:58:05 Build Failed. 25 errors, 2 warnings. (took 1s.18ms)
+
